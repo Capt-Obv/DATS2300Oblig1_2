@@ -2,6 +2,7 @@
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import java.util.Arrays;
 import java.util.NoSuchElementException;
 import java.util.Random;
 
@@ -93,13 +94,97 @@ public class Oblig1 {
 
     ///// Oppgave 3 //////////////////////////////////////
     public static int antallUlikeUsortert(int[] a) {
-        throw new NotImplementedException();
+        int antallUlike = 0;
+        for (int i = 0; i < a.length; i++) {
+            boolean test = true;
+            for (int j = i - 1; j >= 0; j--) {
+                if (a[i] == a[j]) test = false;
+            }
+
+            if (test) antallUlike++;
+        }
+
+        return antallUlike;
+    }
+
+    public static void boblesortering(int[] a, int fra, int til)     // hører til klassen Tabell
+    {
+        for (int n = til; n > fra; n--)           // n reduseres med 1 hver gang
+        {
+            for (int i = fra+1; i < n; i++)                // går fra 1 til n
+            {
+                if (a[i - 1] > a[i]) bytt(a, i - 1, i);  // sammenligner/bytter
+            }
+        }
     }
 
     ///// Oppgave 4 //////////////////////////////////////
     public static void delsortering(int[] a) {
-        throw new NotImplementedException();
-    }
+        int n = a.length;
+        int m = n - 1;
+        int venstre = 0;
+        int k = 0;
+        int høyre = a.length - 1;
+        boolean cont = true;
+
+        boolean test = false;
+        if (n % 2 == 0) {
+            for (int i = 0; i < (a.length / 2) - 1; i++) {
+                if (i % 2 == 0) test = true;
+            }
+            for (int i = a.length / 2; i < a.length - 1; i++) {
+                if (i % 2 != 0) test = true;
+            }
+            if (test==false) {
+                venstre = a.length / 2;
+                høyre = a.length / 2;
+            }
+        }
+
+
+        if (n != 0 || test == false) {
+            while (cont) {
+                while ((a[venstre] % 2 == 1 || a[venstre] % 2 == -1) && venstre < høyre) {
+                    venstre++;
+                    k++;
+                }
+                while (a[høyre] % 2 == 0 && venstre < høyre) {
+                    høyre--;
+                }
+
+                if (venstre < høyre) {
+                    //byttte plass
+                    bytt(a, venstre++, høyre--);
+                    /*
+                    int temp = a[høyre];
+                    a[høyre] = a[venstre];
+                    a[venstre] = temp;
+
+
+ */
+                } else cont = false;
+
+
+            }
+
+        }
+
+        int q = venstre+høyre;
+        if((q)!= a.length && test == true) {
+            venstre = a.length/2;
+            høyre = venstre;
+        }
+
+            if (n == 0 || n == 1) {
+            } else if (venstre == 0 || venstre == m) {
+                boblesortering(a, 0, a.length);
+            } else {
+                boblesortering(a, 0, venstre);
+                boblesortering(a, venstre, a.length);
+            }
+            System.out.println(Arrays.toString(a));
+        }
+
 
     ///// Oppgave 5 //////////////////////////////////////
     public static void rotasjon(char[] a) {
