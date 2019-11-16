@@ -61,7 +61,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.Oblig1Test.oppgave4">
+  <component name="RunManager" selected="Application.Oblig1">
     <configuration name="Oblig1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Oblig1" />
       <module name="DATS2300Oblig1" />
@@ -100,10 +100,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Oblig1" />
         <item itemvalue="JUnit.Oblig1Test.oppgave4" />
         <item itemvalue="JUnit.Oblig1Test" />
         <item itemvalue="JUnit.Oblig1Test.oppgave1" />
-        <item itemvalue="Application.Oblig1" />
       </list>
     </recent_temporary>
   </component>
@@ -117,7 +117,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1573766584607</updated>
-      <workItem from="1573766590315" duration="9206000" />
+      <workItem from="1573766590315" duration="11625000" />
+      <workItem from="1573903715868" duration="2594000" />
     </task>
     <servers />
   </component>
@@ -129,7 +130,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

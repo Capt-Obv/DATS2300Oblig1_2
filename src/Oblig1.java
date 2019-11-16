@@ -128,22 +128,24 @@ public class Oblig1 {
         boolean cont = true;
 
         boolean test = false;
-        if (n % 2 == 0) {
-            for (int i = 0; i < (a.length / 2) - 1; i++) {
-                if (i % 2 == 0) test = true;
-            }
-            for (int i = a.length / 2; i < a.length - 1; i++) {
-                if (i % 2 != 0) test = true;
-            }
-            if (test==false) {
-                venstre = a.length / 2;
-                høyre = a.length / 2;
+        if (a.length !=0 || a.length != 1) {
+            if (n % 2 == 0) {
+                for (int i = 0; i < (a.length / 2) - 1; i++) {
+                    if (i % 2 == 0) test = true;
+                }
+                for (int i = a.length / 2; i < a.length - 1; i++) {
+                    if (i % 2 != 0) test = true;
+                }
+                if (test == false) {
+                    venstre = a.length / 2;
+                    høyre = a.length / 2;
+                }
             }
         }
 
-
-        if (n != 0 || test == false) {
+        if ((n>1 )&& test == false) {
             while (cont) {
+
                 while ((a[venstre] % 2 == 1 || a[venstre] % 2 == -1) && venstre < høyre) {
                     venstre++;
                     k++;
@@ -230,7 +232,9 @@ public class Oblig1 {
     public static void main(String args[]){
         int[] tom = {};
         System.out.println(tom.length);
-        int maks = maks(tom);
+        delsortering(tom);
+        int[] rand = {1, 2, 3, 4, 5, 6};
+        delsortering(rand);
     }
 
 }  // Oblig1
