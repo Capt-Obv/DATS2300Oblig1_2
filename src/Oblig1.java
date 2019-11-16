@@ -2,7 +2,6 @@
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
-import java.util.Arrays;
 import java.util.NoSuchElementException;
 import java.util.Random;
 
@@ -118,32 +117,31 @@ public class Oblig1 {
         }
     }
 
+    public static void partitionSort(int[] a, int fra, int til){
+        int pivot = a[fra];
+        int i = fra -1;
+        int j = til +1;
+        while(i<j){
+            for(i++; a[i]<pivot; i++);
+            for(j--; a[j]>pivot; j--);
+            if(i<j) bytt(a, i, j);
+        }
+    }
+
     ///// Oppgave 4 //////////////////////////////////////
     public static void delsortering(int[] a) {
         int n = a.length;
+        int delt = a.length/2;
         int m = n - 1;
         int venstre = 0;
         int k = 0;
         int høyre = a.length - 1;
         boolean cont = true;
-
         boolean test = false;
-        if (a.length !=0 || a.length != 1) {
-            if (n % 2 == 0) {
-                for (int i = 0; i < (a.length / 2) - 1; i++) {
-                    if (i % 2 == 0) test = true;
-                }
-                for (int i = a.length / 2; i < a.length - 1; i++) {
-                    if (i % 2 != 0) test = true;
-                }
-                if (test == false) {
-                    venstre = a.length / 2;
-                    høyre = a.length / 2;
-                }
-            }
-        }
+        int testv = 1;
+        int testh = 1;
 
-        if ((n>1 )&& test == false) {
+        if (n > 1) {
             while (cont) {
 
                 while ((a[venstre] % 2 == 1 || a[venstre] % 2 == -1) && venstre < høyre) {
@@ -165,17 +163,38 @@ public class Oblig1 {
 
  */
                 } else cont = false;
-
-
             }
-
         }
 
-        int q = venstre+høyre;
-        if((q)!= a.length && test == true) {
-            venstre = a.length/2;
-            høyre = venstre;
-        }
+        if (a.length > 2) {
+            if (n % 2 == 0) {
+                for (int i = 0; i < delt; i++) {
+
+                    if (a[i] % 2 == 0) {
+                        testv++; }
+                }
+                for (int i = delt + 1; i < delt; i++) {
+                    if (a[i] % 2 != 0) {
+                        testh++;
+                    }
+
+                }
+                if ((testv != delt) && (testh != delt)) {
+                        venstre = delt;
+                        høyre = delt;
+                        test = true;
+                    }
+                }
+
+
+            int q = venstre + høyre;
+            boolean l = q != a.length;
+            if (q != a.length) {
+                if (test) {
+                    venstre = delt;
+                    høyre = venstre;
+                }
+            }
 
             if (n == 0 || n == 1) {
             } else if (venstre == 0 || venstre == m) {
@@ -184,8 +203,8 @@ public class Oblig1 {
                 boblesortering(a, 0, venstre);
                 boblesortering(a, venstre, a.length);
             }
-            System.out.println(Arrays.toString(a));
         }
+    }
 
 
     ///// Oppgave 5 //////////////////////////////////////
