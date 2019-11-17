@@ -116,16 +116,102 @@ public class Oblig1 {
             }
         }
     }
-
-    public static void partitionSort(int[] a, int fra, int til){
+/*
+    public static int partition(int[] a, int fra, int til) {
         int pivot = a[fra];
-        int i = fra -1;
-        int j = til +1;
-        while(i<j){
-            for(i++; a[i]<pivot; i++);
-            for(j--; a[j]>pivot; j--);
-            if(i<j) bytt(a, i, j);
+        int i = fra;
+        int j = til-1;
+        while(i<j) {
+            while(a[i]<pivot){
+                i++;
+            }
+
+            if (i < j) {
+                bytt(a, i, j);
+                fra++;
+                til--;
+            }
+
         }
+        System.out.println(pivot);
+        int temp = a[fra];
+        a[til] = pivot;
+        a[til] = temp;
+        return j;
+    }
+    public static void quickSort(int[] arr, int start, int end){
+
+        int  partition = partition(arr, start, end);
+
+        if(partition-1>start) {
+            quickSort(arr, start, partition - 1);
+        }
+        if(partition+1<end) {
+            quickSort(arr, partition + 1, end);
+        }
+
+
+    }
+*/
+
+    public static int partition(int arr[], int left, int right)
+
+    {
+
+        int i = left, j = right;
+
+        int tmp;
+
+        int pivot = arr[(left + right) / 2];
+
+
+
+        while (i <= j) {
+
+            while (arr[i] < pivot)
+
+                i++;
+
+            while (arr[j] > pivot)
+
+                j--;
+
+            if (i <= j) {
+
+                tmp = arr[i];
+
+                arr[i] = arr[j];
+
+                arr[j] = tmp;
+
+                i++;
+
+                j--;
+
+            }
+
+        };
+
+
+
+        return i;
+
+    }
+
+
+
+    public static void quickSort(int arr[], int left, int right) {
+
+        int index = partition(arr, left, right);
+
+        if (left < index - 1)
+
+            quickSort(arr, left, index - 1);
+
+        if (index < right)
+
+            quickSort(arr, index, right);
+
     }
 
     ///// Oppgave 4 //////////////////////////////////////
@@ -141,7 +227,7 @@ public class Oblig1 {
         int testv = 1;
         int testh = 1;
 
-        if (n > 1) {
+        if (n > 2) {
             while (cont) {
 
                 while ((a[venstre] % 2 == 1 || a[venstre] % 2 == -1) && venstre < høyre) {
@@ -198,10 +284,10 @@ public class Oblig1 {
 
             if (n == 0 || n == 1) {
             } else if (venstre == 0 || venstre == m) {
-                boblesortering(a, 0, a.length);
+                quickSort(a, 0, a.length);
             } else {
-                boblesortering(a, 0, venstre);
-                boblesortering(a, venstre, a.length);
+                quickSort(a, 0, venstre);
+                quickSort(a, venstre, a.length);
             }
         }
     }
