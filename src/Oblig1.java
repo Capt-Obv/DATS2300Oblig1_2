@@ -1,5 +1,3 @@
-
-
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.NoSuchElementException;
@@ -128,7 +126,14 @@ public class Oblig1 {
         }
     }
 
+    public static void delsortering(int[] a) {
+        throw new NotImplementedException();
+    }
+    /*
     ///// Oppgave 4 //////////////////////////////////////
+
+     */
+    /*
     public static void delsortering(int[] a) {
         int n = a.length;
         int delt = a.length/2;
@@ -162,6 +167,7 @@ public class Oblig1 {
 
 
  */
+    /*
                 } else cont = false;
             }
         }
@@ -206,27 +212,192 @@ public class Oblig1 {
         }
     }
 
-
+*/
     ///// Oppgave 5 //////////////////////////////////////
     public static void rotasjon(char[] a) {
-        throw new NotImplementedException();
+
+        if(a.length<2){}
+        else if(a.length==2){
+            char temp = a[0];
+            a[0] = a[1];
+            a[1] = temp;
+        }
+        else{
+            char siste = a[a.length-1];
+
+            for(int i = a.length-1; i>0; i-- ){
+                a[i]= a[i-1];
+            }
+
+            a[0] = siste;
+        }
     }
 
     ///// Oppgave 6 //////////////////////////////////////
-    public static void rotasjon(char[] a, int k) {
-        throw new NotImplementedException();
+    public static void rotasjonLeft(char[] a) {
+
+        if(a.length<2){}
+        else if(a.length==2){
+            char temp = a[0];
+            a[0] = a[1];
+            a[1] = temp;
+        }
+        else{
+            char siste = a[0];
+
+            for(int i = 0; i<a.length-1; i++ ){
+                a[i+1]= a[i];
+            }
+
+            a[a.length] = siste;
+        }
     }
+
+    public static void rotasjon(char[] a, int k) {
+        int n = a.length;
+
+        if (n == 0) return;
+        if(k== 1) rotasjon(a);
+        if (k == -1){
+            rotasjonLeft(a);
+        }
+
+        if(k>n) k = k%n;
+
+
+        if(k<-1){
+            int u = k*-1;
+            System.out.println(k);
+            reverseArray(a, 0, u - 1);
+            reverseArray(a, u, n - 1);
+            reverseArray(a, 0, n - 1);
+        }
+        if(k>1) {
+            reverseArray(a, 0, n - 1);
+            reverseArray(a, 0, k - 1);
+            reverseArray(a, k, n - 1);
+        }
+    }
+
+    public static void reverseArray(char[] a, int fra,int til){
+
+        char temp = a[fra];
+        while(fra<til) {
+            temp = a[fra];
+            a[fra] = a[til];
+            a[til] = temp;
+            fra++;
+            til--;
+        }
+    }
+
 
     ///// Oppgave 7 //////////////////////////////////////
     /// 7a)
     public static String flett(String s, String t) {
-        throw new NotImplementedException();
+        String a = "";
+        int n = s.length();
+        int m = t.length();
+        if((n==0) && (m==0)) return a;
+        else if(n==0){
+            a = t;
+            return a;
+        }
+        else if(m==0){
+            a = s;
+            return a;
+        }
+        if(n==0) {
+            a = t;
+            return a;
+        }
+        if (m==0) {
+            a= s;
+            return a;
+        }
+        if (s.length() > t.length()) {
+            for (int i = 0; i < t.length(); i++) {
+                a += s.charAt(i);
+                a += t.charAt(i);
+
+            }
+
+            for (int i = t.length(); i < s.length(); i++) {
+                a += s.charAt(i);
+            }
+        } else if (t.length() > s.length()) {
+            for (int i = 0; i < s.length(); i++) {
+                a += s.charAt(i);
+                a += t.charAt(i);
+
+            }
+
+            for (int i = s.length(); i < t.length(); i++) {
+                a += t.charAt(i);
+            }
+        }
+
+        else {
+            for (int i = 0; i < s.length(); i++) {
+                a += s.charAt(i) + t.charAt(i);
+
+            }
+        }
+        return a;
     }
+
 
     /// 7b)
     public static String flett(String... s) {
-        throw new NotImplementedException();
+        System.out.println("flett");
+        String a = "";
+        boolean check = true;
+        int sum = 0;
+        int[] lengthArray = new int[s.length];
+        String[] temp = new String[s.length];
+        for (int i = 0; i < s.length; i++) {
+            System.out.println(sum);
+                lengthArray[i] = s[i].length();
+                sum += lengthArray[i] ;
+
+        }
+        int i = 0;
+        int j = lengthArray[0];
+        while(check){
+            System.out.println(a);
+            if(lengthArray[i]==0){
+                System.out.println("lenghtarra == 0");
+                i++;
+                if(i>s.length-1) {
+                    check = false;
+                }
+                else {
+                    System.out.println("pdate j");
+                    j = lengthArray[i];
+                }
+            }
+
+            if (j < lengthArray[i]){
+                System.out.println("j<lengtharray");
+                a += s[i].charAt(j);
+                j++;
+
+                if((j == lengthArray[i]-1)|| j>lengthArray[i]-1) {
+                    i++;
+                    if(i>s.length-1) {
+                        check = false;
+                    }
+                    j = lengthArray[i];
+
+                    }
+                } else check = false;
+            }
+        System.out.println(a);
+        return a;
     }
+
+
+
 
     ///// Oppgave 8 //////////////////////////////////////
     public static int[] indekssortering(int[] a) {
@@ -249,11 +420,31 @@ public class Oblig1 {
     }
 
     public static void main(String args[]){
+        /*
         int[] tom = {};
         System.out.println(tom.length);
         delsortering(tom);
         int[] rand = {1, 2, 3, 4, 5, 6};
         delsortering(rand);
+*/
+        /*
+        char[] a = {};
+        char[] c = {'A', 'B'};
+        char[] d = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'};
+        rotasjon(a);
+        rotasjon(c , -1);
+        rotasjon(d, -3);
+        System.out.println(Arrays.toString(a));
+
+        System.out.println(Arrays.toString(c));
+        System.out.println(Arrays.toString(d));
+
+         */
+        String s2 = flett("", "ABC", "", "ABC");
+        String s = flett("AM ", "L", "GEDS", "ORATKRR", "", "R TRTE", "IO", "TGAUU");
+        System.out.println("flett"+s);
+        System.out.println(s2);
+
     }
 
 }  // Oblig1
