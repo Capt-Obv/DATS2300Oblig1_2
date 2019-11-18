@@ -1,5 +1,6 @@
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import java.util.Arrays;
 import java.util.NoSuchElementException;
 import java.util.Random;
 
@@ -349,50 +350,99 @@ public class Oblig1 {
 
     /// 7b)
     public static String flett(String... s) {
-        System.out.println("flett");
+
+        System.out.println(Arrays.toString(s));
         String a = "";
+        int n = s.length;
+
+        if (n == 0) return a;
+
         boolean check = true;
         int sum = 0;
-        int[] lengthArray = new int[s.length];
-        String[] temp = new String[s.length];
-        for (int i = 0; i < s.length; i++) {
-            System.out.println(sum);
-                lengthArray[i] = s[i].length();
-                sum += lengthArray[i] ;
-
+        int teller = 0;
+        int[] lengthArray = new int[n];
+        int[] zeros = new int[n];
+        for (String i : s) {
+            lengthArray[teller] = i.length();
+            sum += i.length();
+            System.out.println("sum " + sum);
+            zeros[teller] = 0;
+            if (i.length() == 0) {
+                sum++;
+                zeros[teller] = 1;
+            }
+            teller++;
         }
+        /*
         int i = 0;
-        int j = lengthArray[0];
-        while(check){
-            System.out.println(a);
-            if(lengthArray[i]==0){
-                System.out.println("lenghtarra == 0");
+        int j = 0;
+        int k = n-1;
+        int l = m-1;
+        do{
+            System.out.println("i "+i+" j " +j);
+            int m = lengthArray[i];
+            if(m==0){
                 i++;
-                if(i>s.length-1) {
+                if(i>=n-1) {
                     check = false;
                 }
-                else {
-                    System.out.println("pdate j");
-                    j = lengthArray[i];
-                }
+                j = 0;
             }
 
-            if (j < lengthArray[i]){
-                System.out.println("j<lengtharray");
+            if (k <= l){
                 a += s[i].charAt(j);
                 j++;
 
-                if((j == lengthArray[i]-1)|| j>lengthArray[i]-1) {
+                if((j >= m-1)) {
                     i++;
-                    if(i>s.length-1) {
+                    if (i > n-1) {
                         check = false;
                     }
-                    j = lengthArray[i];
 
-                    }
-                } else check = false;
+
+                }
+                }
+            }while(check);
+
+
+*/
+
+
+        teller = 0;
+        //int i = 0;
+        int k = 0;
+        int conter = 0;
+        System.out.println(Arrays.toString(lengthArray) + " sum " + sum);
+ /*       while (k < lengthArray.length) {
+            //if(lengthArray[k]== 0){}
+            for (int i = 0; i < lengthArray[k] - 1; i++) {
+                if (lengthArray[k] == 0) {
+
+                } else {
+                    System.out.println("teller" +teller);
+                    if(teller>=lengthArray[teller]-1) continue;
+                    else a += s[i].charAt(teller);
+
+                }
             }
-        System.out.println(a);
+            teller++;
+            k++;
+   */
+
+ for(int i = 0; i<=lengthArray.length+1; i++)
+    for(String q:s){
+        if(q.isEmpty()){}
+        else if (q.length()>i){System.out.println("q lenge" + q.length()+ " i " +i);
+            a += q.charAt(i);
+        }
+        //else
+    }
+
+
+
+
+
+        System.out.println("svaar" + a);
         return a;
     }
 
@@ -440,10 +490,10 @@ public class Oblig1 {
         System.out.println(Arrays.toString(d));
 
          */
-        String s2 = flett("", "ABC", "", "ABC");
-        String s = flett("AM ", "L", "GEDS", "ORATKRR", "", "R TRTE", "IO", "TGAUU");
-        System.out.println("flett"+s);
-        System.out.println(s2);
+        String s = flett("AFK", "BGLP", "CHMQT", "DINRUW", "EJOSVXY");
+        //String s = flett("AM ", "L", "GEDS", "ORATKRR", "", "R TRTE", "IO", "TGAUU");
+        //System.out.println("flett"+s);
+        System.out.println(s);
 
     }
 

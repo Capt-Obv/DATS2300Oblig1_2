@@ -548,7 +548,8 @@ public class Oblig1Test {
         if (s.compareTo("AFBCDE") != 0) {
             System.out.println
                     ("Oppgave 7a: h) Svaret skal bli lik AFBCDE");
-            antallFeil++;
+
+        antallFeil++;
         }
 
         s = Oblig1.flett("ACEGIK", "BDFHJLMN");
